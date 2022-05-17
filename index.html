@@ -14596,12 +14596,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
@@ -14616,6 +14616,56 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
      </div>
 </div>
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Loading required package: raster
+Loading required package: sp
+
+Attaching package: &#39;raster&#39;
+
+The following object is masked from &#39;package:data.table&#39;:
+
+    shift
+
+Loading required package: lattice
+Loading required package: latticeExtra
+Loading required package: RColorBrewer
+Warning message:
+&#34;package &#39;ggmap&#39; was built under R version 3.6.3&#34;Loading required package: ggplot2
+Registered S3 methods overwritten by &#39;ggplot2&#39;:
+  method         from 
+  [.quosures     rlang
+  c.quosures     rlang
+  print.quosures rlang
+
+Attaching package: &#39;ggplot2&#39;
+
+The following object is masked from &#39;package:latticeExtra&#39;:
+
+    layer
+
+Google&#39;s Terms of Service: https://cloud.google.com/maps-platform/terms/.
+Please cite ggmap if you use it! See citation(&#34;ggmap&#34;) for details.
+</pre>
+</div>
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -14635,7 +14685,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">revol</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;C:\\Users\\Schal107\\Documents\\UBU\\Team DH\\Delpher\\dutchnewspapers-public_query=revolutie_date=1840-01-01 1860-12-31.csv&quot;</span><span class="p">)</span>
@@ -14778,7 +14828,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="n">revol</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">,</span> <span class="s">&quot;date&quot;</span><span class="p">,</span> <span class="s">&quot;article_title&quot;</span><span class="p">,</span> <span class="s">&quot;url&quot;</span><span class="p">)]</span>
@@ -14794,7 +14844,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -14925,29 +14975,25 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 </div>
 
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>For better Named Entity Recognition we will change the article_title variable to lower case strings. 
+SpaCy has the tendency to recognize uppercase strings as corporations.</p>
+
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">For</span> <span class="n">better</span> <span class="n">Named</span> <span class="n">Entity</span> <span class="n">Recognition</span> <span class="n">we</span> <span class="n">will</span> <span class="n">change</span> <span class="n">the</span> <span class="n">article_title</span> <span class="n">variable</span> <span class="n">to</span> <span class="n">lower</span> <span class="n">case</span> <span class="n">strings.</span> 
-<span class="n">SpaCy</span> <span class="n">has</span> <span class="n">the</span> <span class="n">tendency</span> <span class="n">to</span> <span class="n">recognize</span> <span class="n">uppercase</span> <span class="n">strings</span> <span class="n">as</span> <span class="n">corporations.</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">x</span><span class="o">$</span><span class="n">article_title</span> <span class="o">&lt;-</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">article_title</span><span class="p">)</span>
@@ -14975,7 +15021,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">spacy_initialize</span><span class="p">(</span><span class="n">model</span> <span class="o">=</span> <span class="s">&quot;nl_core_news_sm&quot;</span><span class="p">)</span>
@@ -15029,7 +15075,7 @@ successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">parsedtxt</span> <span class="o">&lt;-</span> <span class="nf">spacy_parse</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">article_title</span><span class="p">,</span> <span class="n">lemma</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">entity</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">nounphrase</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
@@ -15045,7 +15091,7 @@ successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">locations</span> <span class="o">&lt;-</span> <span class="nf">entity_extract</span><span class="p">(</span><span class="n">parsedtxt</span><span class="p">)</span>
@@ -15061,7 +15107,7 @@ successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">setDT</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
@@ -15078,7 +15124,7 @@ successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">top100</span><span class="p">)</span>
@@ -15136,17 +15182,16 @@ successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">```{toggle}</span>
-<span class="n">register_google(key = &quot;AIzaSyCFS5l10yNClh7RnGURLdvBsCwGszHrmT4&quot;)</span>
-<span class="n">```</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">google_key</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;C:\\Users\\Schal107\\Documents\\UBU\\Team DH\\Delpher\\google_key.txt&quot;</span><span class="p">)</span>
+<span class="nf">register_google</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="nf">paste0</span><span class="p">(</span><span class="n">google_key</span><span class="o">$</span><span class="n">key</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -15154,37 +15199,12 @@ successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>
-Error in parse(text = x, srcfile = src): attempt to use zero-length variable name
-Traceback:
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">coordinates</span> <span class="o">&lt;-</span> <span class="nf">geocode</span><span class="p">(</span><span class="n">top100</span><span class="o">$</span><span class="n">entity</span><span class="p">)</span>
@@ -15473,7 +15493,7 @@ Warning message:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">coordinates</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">top100</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">)</span>
@@ -15537,7 +15557,7 @@ Warning message:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">europe5</span> <span class="o">&lt;-</span> <span class="nf">get_googlemap</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">lon</span><span class="o">=</span><span class="m">10.95931966568949</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="m">48.561877580811775</span><span class="p">),</span> <span class="n">zoom</span> <span class="o">=</span> <span class="m">4</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;&amp;maptype=roadmap&amp;style=element:geometry%7Ccolor:0xf5f5f5&amp;style=element:labels%7Cvisibility:off&amp;style=element:labels.icon%7Cvisibility:off&amp;style=element:labels.text.fill%7Ccolor:0x616161&amp;style=element:labels.text.stroke%7Ccolor:0xf5f5f5&amp;style=feature:administrative.land_parcel%7Cvisibility:off&amp;style=feature:administrative.land_parcel%7Celement:labels.text.fill%7Ccolor:0xbdbdbd&amp;style=feature:administrative.neighborhood%7Cvisibility:off&amp;style=feature:landscape.natural.terrain%7Ccolor:0xffffff%7Cvisibility:on%7Cweight:4&amp;style=feature:landscape.natural.terrain%7Celement:geometry.fill%7Cvisibility:on%7Cweight:4&amp;style=feature:landscape.natural.terrain%7Celement:geometry.stroke%7Cvisibility:on&amp;style=feature:poi%7Celement:geometry%7Ccolor:0xeeeeee&amp;style=feature:poi%7Celement:labels.text.fill%7Ccolor:0x757575&amp;style=feature:poi.park%7Celement:geometry%7Ccolor:0xe5e5e5&amp;style=feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x9e9e9e&amp;style=feature:road%7Cvisibility:off&amp;style=feature:road%7Celement:geometry%7Ccolor:0xffffff&amp;style=feature:road.arterial%7Celement:labels.text.fill%7Ccolor:0x757575&amp;style=feature:road.highway%7Celement:geometry%7Ccolor:0xdadada&amp;style=feature:road.highway%7Celement:labels.text.fill%7Ccolor:0x616161&amp;style=feature:road.local%7Celement:labels.text.fill%7Ccolor:0x9e9e9e&amp;style=feature:transit.line%7Celement:geometry%7Ccolor:0xe5e5e5&amp;style=feature:transit.station%7Celement:geometry%7Ccolor:0xeeeeee&amp;style=feature:water%7Celement:geometry%7Ccolor:0xc9c9c9&amp;style=feature:water%7Celement:labels.text.fill%7Ccolor:0x9e9e9e&amp;size=480x360&quot;</span><span class="p">)</span>
@@ -15588,7 +15608,7 @@ Warning message:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">p</span> <span class="o">&lt;-</span> <span class="nf">ggmap</span><span class="p">(</span><span class="n">europe5</span><span class="p">)</span>
@@ -18522,22 +18542,6 @@ class="
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 </body>
 
