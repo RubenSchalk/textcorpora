@@ -14559,12 +14559,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -14579,7 +14579,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>This notebook demonstrates how to perform Named Entity Recognition on article titles of historical Dutch newspapers (1840-1860), geocode the retrieved placenames, and subsequently plot them on a map</strong></p>
+<p><center><b><h2>  Where were revolutions located between 1840 and 1860, based on articles titles from Dutch newspapers?</p>
 
 </div>
 </div>
@@ -14591,7 +14591,34 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Load the required libraries</p>
+<hr>
+<p>The dataset was constructed querying Delpher on the keyword 'revolutie' for the period 1840-1860. Since Delpher has no bulk download option, we've instead used <a href="https://ianalyzer.hum.uu.nl">I-Analyzer</a> (developed by the <a href="https://dig.hum.uu.nl/">DH Lab at Utrecht University</a>). This tool allows to query and download Delpher search results for this period.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>To plot the locations mentioned in the article titles several steps are needed: Named Entity Recognition, extracting the locations, geocoding these, and obtaining a map to plot them. Here we've used (mainly) R for this, but Python would work as well.</p>
+<p>Apart from having R installed, you'll also need a python executable with <a href="https://spacy.io/usage">spaCy</a> installed, and the corresponding <a href="https://spacy.io/models/nl#nl_core_news_sm">Dutch language model</a>. If you opt for a Google Map you'll also need a <a href="https://developers.google.com/maps/faq">Google API key for its Maps platform</a>. This is free as long as you don't exceed $200 in API calls a month (which usually does't happen).</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>First we load the required libraries</p>
 
 </div>
 </div>
@@ -15154,7 +15181,7 @@ successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[55]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">coordinates</span> <span class="o">&lt;-</span> <span class="nf">geocode</span><span class="p">(</span><span class="n">top100</span><span class="o">$</span><span class="n">entity</span><span class="p">)</span>
@@ -15603,7 +15630,8 @@ Warning message:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Click below to view the where revolutions were located between 1840 and 1860, based on articles titles from Dutch newspapers:</p>
+<hr>
+<p><center><b><h3>  And here we have our results:</p>
 
 </div>
 </div>
@@ -15615,7 +15643,7 @@ Warning message:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a href="delpher_map.png">delpher_map</a></p>
+<p><a href="delpher_map.png"><img src="delpher_map.png" width="850"/></a></p>
 
 </div>
 </div>
@@ -15627,7 +15655,7 @@ Warning message:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>That is all there is to it! For questions and comments email <a href="mailto:r.schalk@uu.nl">r.schalk@uu.nl</a></p>
+<p>*For questions and comments email <a href="mailto:r.schalk@uu.nl">r.schalk@uu.nl</a></p>
 
 </div>
 </div>
