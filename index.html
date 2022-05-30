@@ -4980,7 +4980,7 @@ form{
   .bp3-running-text table th, table.bp3-html-table th{
     color:#182026;
     font-weight:600; }
-
+  
   .bp3-running-text table td,
   table.bp3-html-table td{
     color:#182026; }
@@ -14579,7 +14579,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<center><b><h2>  Where were revolutions located between 1840 and 1860, based on articles titles from Dutch newspapers?</b></center>
+<center><b><h1>  Where were revolutions located between 1840 and 1860, based on articles titles from Dutch newspapers?</b></center>
 </div>
 </div>
 </div>
@@ -14591,7 +14591,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <hr>
-<p>The dataset was constructed querying Delpher on the keyword 'revolutie' for the period 1840-1860. Since Delpher has no bulk download option, we've instead used <a href="https://ianalyzer.hum.uu.nl">I-Analyzer</a> (developed by the <a href="https://dig.hum.uu.nl/">DH Lab at Utrecht University</a>). This tool allows to query and download Delpher search results for this period.</p>
+<p>The dataset was constructed querying Delpher on the keyword 'revolutie' for the period 1840-1860, with OCR confidence between 80-100 per cent. Since Delpher has no bulk download option, we've instead used <a href="https://ianalyzer.hum.uu.nl">I-Analyzer</a> (developed by the <a href="https://dig.hum.uu.nl/">DH Lab at Utrecht University</a>). This tool allows to query and download Delpher search results for this period.</p>
 
 </div>
 </div>
@@ -14622,12 +14622,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[100]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
@@ -14637,63 +14637,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="nf">library</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ggmap</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Load the dataset (currently locally stored)</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">revol</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;C:\\Users\\Schal107\\Documents\\UBU\\Team DH\\Delpher\\dutchnewspapers-public_query=revolutie_date=1840-01-01 1860-12-31.csv&quot;</span><span class="p">)</span>
-<span class="nf">setDT</span><span class="p">(</span><span class="n">revol</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Inspect the first row of data and the column names. You'll see that it's long because the content of the article is still included. We will not work with that now, since many article_titles already mention a placename. In a next step we could include article content, of course, and use the same workflow as below.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">revol</span><span class="p">[</span><span class="m">1</span><span class="p">])</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggpubr</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14710,16 +14654,134 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-OutputArea-child">
 
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+Attaching package: &#39;ggpubr&#39;
+
+
+The following object is masked from &#39;package:raster&#39;:
+
+    rotate
+
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Load the Delpher dataset (currently locally stored)</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">revol</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;C:\\Users\\Schal107\\Documents\\UBU\\Team DH\\Delpher\\dutchnewspapers-public_query=revolutie_date=1840-01-01 1860-12-31_ocr=80 100_sort=date,desc.csv&quot;</span><span class="p">)</span>
+<span class="nf">setDT</span><span class="p">(</span><span class="n">revol</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Inspect one row of the data. You'll see that it's long because the content of the article is still included. We will not work with that now, since many article_titles already mention a placename. In a next step we could include article content, of course, and use the same workflow as below.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">revol</span><span class="p">[</span><span class="m">5814</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table>
-<thead><tr><th scope=col>date</th><th scope=col>issue_number</th><th scope=col>category</th><th scope=col>circulation</th><th scope=col>temporal</th><th scope=col>article_title</th><th scope=col>content</th><th scope=col>url</th><th scope=col>id</th><th scope=col>language</th><th scope=col>newspaper_title</th><th scope=col>ocr</th><th scope=col>pub_place</th><th scope=col>source</th></tr></thead>
+<table class="dataframe">
+<caption>A data.table: 1 × 10</caption>
+<thead>
+	<tr><th scope=col>date</th><th scope=col>issue_number</th><th scope=col>category</th><th scope=col>circulation</th><th scope=col>temporal</th><th scope=col>article_title</th><th scope=col>content</th><th scope=col>url</th><th scope=col>newspaper_title</th><th scope=col>ocr</th></tr>
+	<tr><th scope=col>&lt;date&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
 <tbody>
-	<tr><td>1851-12-30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </td><td>106                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               </td><td>artikel                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           </td><td>Verenigde Staten                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </td><td>Dag                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               </td><td>REVOLUTIE IN FRANKERIJK                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           </td><td>Met de stoomboot Europa werd over eenige j| dagen liet berigt te New-York aangebragt, dat;' President Louis Napoleon"" de Wetgevende Iva-j. raer van Frankrijk lieeft uiteen gejaagd en president wensebt te worden voor den tijd van 10 ja- j: ren. In deze maand nog moesten de nieuwe al- j gemeene verkiezingen plaats grijpen. Er heeft iwederom bloed in de straten van Parijs gestroomd i cn de hoofdstad werd in staat van beleg verklaard, j Op onderscheidene plaatsen werden barricaden opgeworpen en op verschillende punten hevig gevochten. Twee leden der wetgevende vergadering zijn bij de barricaden gesneuveld, terwijl anderen gevangen zijn of bewaakt worden. President Napoleos beeft openlijk de teugels des be- j winds in handen genomen, en heeft het oog op de , pnpularitiet eener algemeene verkiezings-wet en : den sterken arm der militairen om hem te onder- â–  steunen. Dit zal ongetwijfeld den aanvang eener ; revolutie zijn, verschrikkelijker in haren aard, geweldiger in haren invloed en gewigtiger in hare ] uitwerkingen, dan eene revolutie welke sedert &lt; menige eeuw over Europa gewaaid heeft Aan- ( vankelijk schijnt Napoleon wel te slagen, echter kan de zege van het despotisme slechts van korten ; ( duur zijn. Frankrijk blijft niet lang in revolutie,', en het tegenwoordige is slechts een oproer, welke do teekenen der tijden ons zeggen te moeten voortduren tot dat Europa verlost, herboren en bevrijd is van het juk van dwingelandij en ver- ] drukking ! ,</td><td>http://resolver.kb.nl/resolve?urn=ddd:011021468:mpeg21:a0007                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </td><td>ddd:011021468:mpeg21:a0007                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </td><td>nl                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </td><td>De Sheboygan Nieuwsbode                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           </td><td>79.5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </td><td>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </td><td>Roosevelt Study Center                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </td></tr>
+	<tr><td>1848-10-23</td><td>55</td><td>artikel</td><td>Regionaal/lokaal</td><td>Middag</td><td>UTRECHT, 21 October. DE REVOLUTIE TE WEENEN.</td><td>De revolutie in liet veelzijdige Duitschland ontwikkelt zicli niet zoo gemakkelijk als in Frankrijk, waar zij binnen de muren van Parijs geconcentreerd is. In dit opzigt, laat de navolging veel te wensehen over. De revolutie moet hare voorstellingen beurtelings te Berlijn en te Frankfort, te Keulen en in Weenen geven. Het is niet mogelijk altijd dezelfde rol te spelen en tot eene regelmatige ontknopping te komen. In Oostenrijk vooral, heerschen zulk eene verwarring in de pretentien der verschillende Volkereu , die het Keizerrijk zatnenstellen, zulke tegenstrijdigheden mdc onderlinge verbindtenissen, zulk eene zedelijke wanorde in de sympathiÃ«n, diezich overal lucht geven, dat het moeijelijk is, om zich een helder Overzigt van den toestand des Lands te vormen. En toch is die toestand hoogst gewigtig, zoo zelfs, dat de onverschilligste Couranten-lezer zijn oog rigt naar de oevers van den Donau, ten einde den afloop te bespieden van het groote en bloedige drama, hetwelk aldaar gespeeld Avordt.
+De stookhaard voor de Oostenrijksche revolutie is Weenen met hare 34 voorsteden, en het Stads-gebied. Dtiar zijn hare werktuigen : het Akademisch legertje, slechts voor een klein gedeelte bestaande uit Weenerourgei-zonen , werklieden , vreemdelingen , boeren uit den omtrek en een gedeelte van de Nationale garde. . Die reyolutie is volstrekt democratisch of radicaal. Zij reikt de hand aan deu opstand iri Hongarye, clie aristocratisch is uit het socialistisch oogpunt, en de vernietiging van het Keizerrijk tot politiek doel heeft.
+Naar buiten , steunt zij op de Frankforter Vergadering , die zelve hare kracht erlano-t van alle radicalen uit Europa.
+In 't eerste oogenbiik, scheen de Weener revolutie den bijval te hebben van de geheele Slavische bevolking in CroatiÃ«, HongaryÃ«, Gallicie en BohÃ¨me, want zij voerde in hare vlag de tooverspreuk: vrijheid. Men vergat den nationalen twist der stammen; allen wilden hervorming, maar ook allen tot eigen voordeel. HongaryÃ«, dat is de aanzienlijk- sten van het land, eischtte die ten koste der Croaten, de broeders, die zoo lang in verdrukking leefden, ten koste zelfs van Weenen, want het werkte onmiddellijk voor de vestiging van een Nationaal Gouvernement, ten eenenmale gescheiden van Oostenrijk.
+De Nationale Vergadering te Frankfort, van hare zijde, met eene groote minderheid tegen eene groote meerderheid, beurtelings droomende van eene Duitsche Republiek of van een Duitsch Keizerrijk , zocht niets anders , dan Oostenrijk en vooral Pruissen, als zelfstandige Staten van de kaart te schrappen en de herinneringen der geschiedenis uit te wisschen. Hieruit volgt alzoo, dat de Hongaarsche aristocratie en de Frankforter Vergadering, inzonderheid de radicalen in haar midden, beide bondgenooten zijn van de Weener revolutie, doch ieder op eigene wijze werkende, tot eene ontbinding van de Oostenrijksche Monarchie.
+De politieke partij, die in alle ProvinciÃ«n des Keizerrijks, gehecht bleef aan de Nationale herinneringen, zocht hulp bij de Tyrolers en Croaten, die anders wel degelijk de democratische principes aankleven. De Croaten, aangevoerd door den generaal Jellalich, clen meest populairen persoon der vijf ProvinciÃ«n, haken er naar, om 't Hongaarsche juk af te schudden en hoewel revolutionnair in dit opzigt, strijden zij toch voor de Ã©Ã©nheid van 't Keizerrijk.
+Deze opmerkingen zijn noodig, om den draad der gebeurtenissen met eenig nut te volgen.
+De revolutie van 6 October, waarvoor Weenen verantwoordelijk is, heeft, wat het Binnenland betreft, een anti-nationaal karakter, namelijk: de volstrekte bevrijding van Hongarije; naar buiten een even anti-nationaal doel: het Keizerlijk principe van de Frankforter meerderheid.
+Te midden van deze uitbarstingen, bewaarde het eigenlijke leger eene soort van onzijdigheid. In ItaliÃ« streed men tegen vreemde overheersching , zonder zich met de twisten in het Keizerrijk te bemoeijen, en het leger van Auersperg, dat in 't eerst eene derde partij, noch voor ontbinding van het Keizerrijk, noch voor de heerschappij der Slaven, scheen daartestellen, heeft zich nu met Jellalich vereenigd, ten einde cle Monarchie in stand te doen blijven en de orde te handhaven.
+De partij, die alzoo het Keizerrijk wil be- houden , heeft voor zich : het leger van Praas oncler 't bevel van Prins Windischgratz, (tollende 30 a 40,000 man), cle troepen, clie den Keizer vergezelden naar Ollmutz in Moravit?, en de armee van Jellalich , versterkt door de gedeeltelijke bezetting van Weenen.
+Thans spreekt men eiken dag van een Hongaarsoh leger, dat tot hulp van Weenen opdaagt. Is die tijding waar , dan kan Europa binnen weinige dagen eene ontzettende zamentrekking van elkander vijandige krachten zien , komende uit het Noorden onder Prins Windischgratz, uit het Zuiden onder Generaal 'Jellalich, ten einde de revolutie van 6 October ten onder te brengen , en opdagende uit liet Westen, onder de leiding der Hongaarsche aristocratie, om die revolutie te verdedigen.
+Maar, behalve deze oorlogs-toebereidselen, vestigen wij de aandacht onzer lezers op 't geen gebeurde in het noorden des Keizerrijks, in Bohemen en MoraviÃ«, en op verschillende gewigtige documenten, die uit Praag en Ollmutz, den staat van zaken toelichten.
+Eenige leden van den Rijksdag hebben Weenen, ten tijde van het oproer verlaten. Zij vlugtten naar Praag en in die stad vaardigden zij eene krachtige en goed gestelde, proclamatie tegen het Weener oproer uit, in naam der wet, der orde, ja, zelfs in naam der revolutie. De Keizer openbaarde insgelijks met onmiskenbare openhartigheid in een manifest, de beginselen zijner Staatkunde; Windischgratz verkondigde evenzeer zijn vast besluit, om voor Monarchie en orde te zullen strijden, en Jellalich proclameerde niets, maar handelde, waar hij kon en mogt. Die krijgsman - volgens de Parijsche democraten, een soort van barbaar - zeide tot, de afgevaardigden van het zegevierend Vf eener oproer: ?ik ben liberaal als gij, maar ik wil orde en de handhaving van ''t Keizerrijf
+De strijd is dus niet meer eene revolutie en contra-revolutie, maar de burgeroorlog; beide partijen staan slagvaardig.
+Intrigues baten niet meer; ieder heeft gezegd , wat hij zocht.
+De verdedigers vau de Monarchie zijn eensgezind ; zij gehoorzamen van het eene einde des Keizerrijk? tot aan het andere, onder de
+leus: orde. Die orde vinden zij in de Constitutie en in Nationale eendragt. Die leus wapende de en Croaten. En - wat heeft de revolutie van 6 October op hare banier te schrijven ?
+Niets anders dan: opstand en moord!
+Overigens is er in dezen kampstrijd nog iets gewigtigers te beschouwen, dan de principes; het zijn de middelen, die er aangewend , de daden, die er verrigt werden.
+Uit dit oogpunt moet men den bloedigen opstand te Weenen en de verschrikkelijke barbaarschheid , waarvan de Prins Lamberg en de ongelukkige Minister Latour de slagtofFers waren, tegen over de handelingen stellen van Jellalich in Hongarije. Dat zijn getuigenissen, die men niet als verdacht kan uitkrijten. De overwinnaars van 6 Octoher hebben de correspondentie aan 't licht srebrast, gevoerd tusschen den Oorlogsminister Latour en Jellalich. Voor den Staatsman en tlen Generaal kon er niets vereerender worden bijgebragt. Men zag er uit, dat het Opperhoofd cler Croaten - de barbaar! - vooral bedacht was, om de bewoners van Hongarije te sparen en 't volk zelfs, zoo min mogelijk, oncler de rampen des oorlogs te doen lijden. Hij marcheerde slechts langzaam vooruit en nam de grootste voorzorgen , omdat hij van de landstreken die hij doortrok noch geld, noch ammunitie, noch levensmiddelen, nog iets anders , wilde heffen. Onophoudelijk vroeg hij te Weenen om geld, ten einde contant te betalen wat hij voor ziin leo-er noodig had. Die zucht tot orde en tot matiging heeft zijnen aantogt vertraagd en den Hongaren gelegenheid gegeven om het hun dreigend gevaar af te wenden. Bij deze beschouwing, treedt het bloedig tafereel in Weenen's straten, met zooveel te harder kleuren in 't volle daglicht.
+Thans zijn cle militaire operatiÃ«n voor eenige dagen gestaakt. Aan elke zijde wacht men op versterking. De Weeners uit Hongarije - cle Croaten uit OllmÃ¼tz.
+Ziedaar den staat van zaken in Oostenrijk. Oorlog, langdurige oorlog, ziedaar, het perspectief, voor cle revolutionnairen van Weenen geopend, indien zij overwinnaars zijn.
+Alleen de zege door de Keizerlijk- Koninklijke troepen behaald, kan, bij een voorzigiig gebruik van de overwinning te maken, cic orde en daarmede de rust herstellen.
+Volgens een gerucht, zouden de Magayaren aan Cavaignac 30,000 man hulptroepen hebben gevraagd, en dit heeft hunne trotschheid zeker veel gekost, want het zijn de Gasconjers van Duitschland, zonder echter de deugden en gebreken van deze te bezitten.
+De Croaten daarentegen zijn ruw, zoogenaamde pandoeren, die hun' Bisschop en regiments-kolonel blindelings gehoorzamen.
+Men verdiepe zich echter niet te veel in berekeningen over den oorlogs-kans, want het is te vergeefs, dat men bij zooveel verdeeldheid van beginsels, de bataillons telt. Hun aantal beslist de overwinning geenzins, wÃ¨l de menigte, clie inderdaad vechten - ivil.
+Welke de gevolgen ook zijn van dit bloedig tooneel - het is zeer te betwijfelen, of Duitschland ooit reden zal hebben, om zich te verheugen over den onhandelbaren ijver zijner Republikeinsche kinderen.</td><td>http://resolver.kb.nl/resolve?urn=ddd:010067146:mpeg21:a0001</td><td>De Nederlander : nieuwe Utrechtsche courant : (staatkundig- nieuws-, handels- en advertentie-blad) / onder red. van J. van Hall</td><td>98.9</td></tr>
 </tbody>
 </table>
 
@@ -14736,7 +14798,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[51]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">colnames</span><span class="p">(</span><span class="n">revol</span><span class="p">)</span>
@@ -14756,28 +14818,18 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-OutputArea-child">
 
-
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<ol class=list-inline>
-	<li>'date'</li>
-	<li>'issue_number'</li>
-	<li>'category'</li>
-	<li>'circulation'</li>
-	<li>'temporal'</li>
-	<li>'article_title'</li>
-	<li>'content'</li>
-	<li>'url'</li>
-	<li>'id'</li>
-	<li>'language'</li>
-	<li>'newspaper_title'</li>
-	<li>'ocr'</li>
-	<li>'pub_place'</li>
-	<li>'source'</li>
-</ol>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'date'</li><li>'issue_number'</li><li>'category'</li><li>'circulation'</li><li>'temporal'</li><li>'article_title'</li><li>'content'</li><li>'url'</li><li>'newspaper_title'</li><li>'ocr'</li></ol>
 
 </div>
 
@@ -14804,10 +14856,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="n">revol</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">,</span> <span class="s">&quot;date&quot;</span><span class="p">,</span> <span class="s">&quot;article_title&quot;</span><span class="p">,</span> <span class="s">&quot;url&quot;</span><span class="p">)]</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="n">revol</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;date&quot;</span><span class="p">,</span> <span class="s">&quot;article_title&quot;</span><span class="p">,</span> <span class="s">&quot;url&quot;</span><span class="p">)]</span>
 </pre></div>
 
      </div>
@@ -14820,10 +14872,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="m">5851</span><span class="o">:</span><span class="m">5858</span><span class="p">]</span>
 </pre></div>
 
      </div>
@@ -14840,21 +14892,27 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-OutputArea-child">
 
-
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table>
-<thead><tr><th scope=col>id</th><th scope=col>date</th><th scope=col>article_title</th><th scope=col>url</th></tr></thead>
+<table class="dataframe">
+<caption>A data.table: 8 × 3</caption>
+<thead>
+	<tr><th scope=col>date</th><th scope=col>article_title</th><th scope=col>url</th></tr>
+	<tr><th scope=col>&lt;date&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
 <tbody>
-	<tr><td>ddd:011021468:mpeg21:a0007                                  </td><td>1851-12-30                                                  </td><td>REVOLUTIE IN FRANKERIJK                                     </td><td>http://resolver.kb.nl/resolve?urn=ddd:011021468:mpeg21:a0007</td></tr>
-	<tr><td>ddd:011021468:mpeg21:a0037                                  </td><td>1851-12-30                                                  </td><td>REVOLUTIE IN FRANKRIJK.                                     </td><td>http://resolver.kb.nl/resolve?urn=ddd:011021468:mpeg21:a0037</td></tr>
-	<tr><td>ddd:010078958:mpeg21:a0001                                  </td><td>1859-04-21                                                  </td><td>Frakrijk en de Revolutie.                                   </td><td>http://resolver.kb.nl/resolve?urn=ddd:010078958:mpeg21:a0001</td></tr>
-	<tr><td>TEN:MMKB08:MMKB08:000088461:mpeg21:a0006                    </td><td>1853-08-10                                                  </td><td>(1) Ongeloof en Revolutie bladz. 55.                        </td><td>400337789                                                   </td></tr>
-	<tr><td>ddd:010081856:mpeg21:a0013                                  </td><td>1850-07-18                                                  </td><td>VARIA. BALANS DER FEBRUARIJ REVOLUTIE.                      </td><td>http://resolver.kb.nl/resolve?urn=ddd:010081856:mpeg21:a0013</td></tr>
-	<tr><td>ddd:010067146:mpeg21:a0001                                  </td><td>1848-10-23                                                  </td><td>UTRECHT, 21 October. DE REVOLUTIE TE WEENEN.                </td><td>http://resolver.kb.nl/resolve?urn=ddd:010067146:mpeg21:a0001</td></tr>
+	<tr><td>1848-10-13</td><td>REVOLUTIE IN WEENEN OP DEN 6 EN 7 OCTOBER.          </td><td>http://resolver.kb.nl/resolve?urn=ddd:010772343:mpeg21:a0051</td></tr>
+	<tr><td>1848-10-13</td><td>ZWITSERLAND. BERN 8 Oct.                            </td><td>http://resolver.kb.nl/resolve?urn=ddd:010779162:mpeg21:a0002</td></tr>
+	<tr><td>1848-10-13</td><td>Brussel , 11 October.                               </td><td>http://resolver.kb.nl/resolve?urn=ddd:010067138:mpeg21:a0009</td></tr>
+	<tr><td>1848-10-12</td><td>FRANKRIJK. PARIJS, den 8sten October.               </td><td>http://resolver.kb.nl/resolve?urn=ddd:010174429:mpeg21:a0001</td></tr>
+	<tr><td>1848-10-12</td><td>Een blik op FrankrijKs consti- tuerende vergadering.</td><td>http://resolver.kb.nl/resolve?urn=ddd:010151491:mpeg21:a0001</td></tr>
+	<tr><td>1848-10-10</td><td>LONDEN. 7 October ('savonds).                       </td><td>http://resolver.kb.nl/resolve?urn=ddd:010519531:mpeg21:a0007</td></tr>
+	<tr><td>1848-10-10</td><td>FRANKRIJK. PARIJS, 3 October.                       </td><td>http://resolver.kb.nl/resolve?urn=ddd:010772342:mpeg21:a0017</td></tr>
+	<tr><td>1848-10-10</td><td>DUITSCHLAND.                                        </td><td>http://resolver.kb.nl/resolve?urn=ddd:010929387:mpeg21:a0008</td></tr>
 </tbody>
 </table>
 
@@ -14883,7 +14941,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">x</span><span class="o">$</span><span class="n">date</span> <span class="o">&lt;-</span> <span class="nf">as.Date</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">date</span><span class="p">)</span>
@@ -14900,7 +14958,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[36]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">setDT</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -14921,25 +14979,29 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <div class="jp-OutputArea-child">
 
-
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table>
-<thead><tr><th scope=col>year</th><th scope=col>N</th></tr></thead>
+<table class="dataframe">
+<caption>A data.table: 10 × 2</caption>
+<thead>
+	<tr><th scope=col>year</th><th scope=col>N</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
 <tbody>
-	<tr><td>1860</td><td>1290</td></tr>
-	<tr><td>1859</td><td> 966</td></tr>
-	<tr><td>1858</td><td> 355</td></tr>
-	<tr><td>1857</td><td> 365</td></tr>
-	<tr><td>1856</td><td> 542</td></tr>
-	<tr><td>1855</td><td> 339</td></tr>
-	<tr><td>1854</td><td> 487</td></tr>
-	<tr><td>1853</td><td> 538</td></tr>
-	<tr><td>1852</td><td> 497</td></tr>
-	<tr><td>1851</td><td> 613</td></tr>
+	<tr><td>1860</td><td>1006</td></tr>
+	<tr><td>1859</td><td> 806</td></tr>
+	<tr><td>1858</td><td> 290</td></tr>
+	<tr><td>1857</td><td> 321</td></tr>
+	<tr><td>1856</td><td> 471</td></tr>
+	<tr><td>1855</td><td> 217</td></tr>
+	<tr><td>1854</td><td> 317</td></tr>
+	<tr><td>1853</td><td> 328</td></tr>
+	<tr><td>1852</td><td> 290</td></tr>
+	<tr><td>1851</td><td> 404</td></tr>
 </tbody>
 </table>
 
@@ -14958,7 +15020,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>For better Named Entity Recognition we will change the article_title variable to lower case strings.
+<p>For better Named Entity Recognition we will change the article_title variable to lower case strings. 
 SpaCy has the tendency to recognize uppercase strings as corporations.</p>
 
 </div>
@@ -14969,7 +15031,7 @@ SpaCy has the tendency to recognize uppercase strings as corporations.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">x</span><span class="o">$</span><span class="n">article_title</span> <span class="o">&lt;-</span> <span class="nf">tolower</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">article_title</span><span class="p">)</span>
@@ -14997,7 +15059,7 @@ SpaCy has the tendency to recognize uppercase strings as corporations.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">spacy_initialize</span><span class="p">(</span><span class="n">model</span> <span class="o">=</span> <span class="s">&quot;nl_core_news_sm&quot;</span><span class="p">)</span>
@@ -15017,17 +15079,29 @@ SpaCy has the tendency to recognize uppercase strings as corporations.</p>
 
 <div class="jp-OutputArea-child">
 
-
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>Finding a python executable with spaCy installed...
-spaCy (language model: nl_core_news_sm) is installed in C:\Users\Schal107\AppData\Local\Programs\Python\Python39\python.exe
-successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
-(python options: type = &#34;python_executable&#34;, value = &#34;C:\Users\Schal107\AppData\Local\Programs\Python\Python39\python.exe&#34;)
+<pre>spaCy is already initialized
+
 </pre>
 </div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output " data-mime-type="text/plain">
+<pre>NULL</pre>
+</div>
+
 </div>
 
 </div>
@@ -15051,7 +15125,7 @@ successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">parsedtxt</span> <span class="o">&lt;-</span> <span class="nf">spacy_parse</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">article_title</span><span class="p">,</span> <span class="n">lemma</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">entity</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">nounphrase</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
@@ -15067,7 +15141,7 @@ successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">locations</span> <span class="o">&lt;-</span> <span class="nf">entity_extract</span><span class="p">(</span><span class="n">parsedtxt</span><span class="p">)</span>
@@ -15083,7 +15157,7 @@ successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">setDT</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
@@ -15100,7 +15174,7 @@ successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">top100</span><span class="p">)</span>
@@ -15120,21 +15194,25 @@ successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
 
 <div class="jp-OutputArea-child">
 
-
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table>
-<thead><tr><th scope=col>entity</th><th scope=col>N</th></tr></thead>
+<table class="dataframe">
+<caption>A data.table: 6 × 2</caption>
+<thead>
+	<tr><th scope=col>entity</th><th scope=col>N</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
 <tbody>
-	<tr><td>frankrijk</td><td>1349     </td></tr>
-	<tr><td>parijs   </td><td> 997     </td></tr>
-	<tr><td>amsterdam</td><td> 535     </td></tr>
-	<tr><td>utrecht  </td><td> 304     </td></tr>
-	<tr><td>londen   </td><td> 168     </td></tr>
-	<tr><td>brussel  </td><td> 129     </td></tr>
+	<tr><td>amsterdam </td><td>652</td></tr>
+	<tr><td>parijs    </td><td>246</td></tr>
+	<tr><td>buitenland</td><td>212</td></tr>
+	<tr><td>londen    </td><td> 77</td></tr>
+	<tr><td>rome      </td><td> 35</td></tr>
+	<tr><td>madrid    </td><td> 33</td></tr>
 </tbody>
 </table>
 
@@ -15163,7 +15241,7 @@ successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">google_key</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;C:\\Users\\Schal107\\Documents\\UBU\\Team DH\\Delpher\\google_key.txt&quot;</span><span class="p">)</span>
@@ -15180,7 +15258,7 @@ successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[55]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">coordinates</span> <span class="o">&lt;-</span> <span class="nf">geocode</span><span class="p">(</span><span class="n">top100</span><span class="o">$</span><span class="n">entity</span><span class="p">)</span>
@@ -15200,199 +15278,291 @@ successfully initialized (spaCy Version: 3.3.0, language model: nl_core_news_sm)
 
 <div class="jp-OutputArea-child">
 
-
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>Source : https://maps.googleapis.com/maps/api/geocode/json?address=frankrijk&amp;key=xxx
+<pre>Source : https://maps.googleapis.com/maps/api/geocode/json?address=amsterdam&amp;key=xxx
+
 Source : https://maps.googleapis.com/maps/api/geocode/json?address=parijs&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=amsterdam&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=utrecht&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=buitenland&amp;key=xxx
+
 Source : https://maps.googleapis.com/maps/api/geocode/json?address=londen&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=rome&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=madrid&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=china&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=portugal&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=ingezonden&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;ingezonden&#34; failed with error:
+
+&#34;
 Source : https://maps.googleapis.com/maps/api/geocode/json?address=brussel&amp;key=xxx
+
 &#34;brussel&#34; not uniquely geocoded, using &#34;brussels, belgium&#34;
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=rotterdam&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=berlijn&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=utrecht&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=7den&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;7den&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=amstebdam&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=frankrijk&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=berigten&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;berigten&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=britsch&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=5den&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;5den&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=hamburg&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=zwolle&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=nederland&amp;key=xxx
+
+&#34;nederland&#34; not uniquely geocoded, using &#34;netherlands&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=cuba&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=palmerston&amp;key=xxx
+
+&#34;palmerston&#34; not uniquely geocoded, using &#34;palmerston city nt 0830, australia&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=rusland&amp;key=xxx
+
+&#34;rusland&#34; not uniquely geocoded, using &#34;rusland, ulverston la12 8js, uk&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=wisconsin&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=holland&amp;key=xxx
+
 Source : https://maps.googleapis.com/maps/api/geocode/json?address=nederlanden&amp;key=xxx
+
 Warning message:
 &#34;Geocoding &#34;nederlanden&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=nederland&amp;key=xxx
-&#34;nederland&#34; not uniquely geocoded, using &#34;netherlands&#34;
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=besigten&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;besigten&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=n.c_.&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;n.c_.&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=belgeie&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=warschau&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=mei_.&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;mei_.&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=hamrurg&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=zitting&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;zitting&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=haarjlem&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;haarjlem&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=koningrijk&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;koningrijk&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=st_._petersburg_den_13_april&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=%C3%A2%E2%82%AC%C5%BEverrlarikg&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;â€žverrlarikg&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=breslan&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;breslan&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=nomenklatuur&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;nomenklatuur&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=iran&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=japan&amp;key=xxx
+
 Source : https://maps.googleapis.com/maps/api/geocode/json?address=engeland&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=china&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=rome&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=europa&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;europa&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=rijn&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=zuid-amerika&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=oostenrijk&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=athene&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=rusland&amp;key=xxx
-&#34;rusland&#34; not uniquely geocoded, using &#34;rusland, ulverston la12 8js, uk&#34;
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=keulen&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=hongarije&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=antwerpen&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=madrid&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=%C3%A2%E2%82%AC_%E2%84%A2_s_avonds&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;â€_™_s_avonds&#34; failed with error:
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=eiland_cuba&amp;key=xxx
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=warschau&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=regtstreeksche_verkiezingen&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;regtstreeksche_ve...&#34; failed with error:
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=dresden&amp;key=xxx
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=aken&amp;key=xxx
-&#34;aken&#34; not uniquely geocoded, using &#34;aken (elbe), germany&#34;
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=petersburg&amp;key=xxx
-&#34;petersburg&#34; not uniquely geocoded, using &#34;petersburg, va, usa&#34;
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=%C3%A2%E2%82%AC_%E2%84%A2_savonds&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;â€_™_savonds&#34; failed with error:
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=middelburg&amp;key=xxx
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=pruisen&amp;key=xxx
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=pruisen&amp;key=xxx
+
 Warning message:
 &#34;Geocoding &#34;pruisen&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=maastricht&amp;key=xxx
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=tooneelnieuws&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;tooneelnieuws&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=ontwerp_gemeente_-_wet&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;ontwerp_gemeente_...&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=venezuela&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=assen&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=lijkzang&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;lijkzang&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=frankrijk_voorgesteld&amp;key=xxx
+
 Source : https://maps.googleapis.com/maps/api/geocode/json?address=messina&amp;key=xxx
-&#34;messina&#34; not uniquely geocoded, using &#34;messina, metropolitan city of messina, italy&#34;
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=europesche_cirkus&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;europesche_cirkus&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=amstebdam&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=zwolle&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=luxemburg&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=parijs_16&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;parijs_16&#34; failed with error:
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=avonturen&amp;key=xxx
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=tegenwoordige_panick&amp;key=xxx
 Warning message:
-&#34;Geocoding &#34;tegenwoordige_panick&#34; failed with error:
+&#34;Geocoding &#34;avonturen&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=parijs_25&amp;key=xxx
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=mexico&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=meldt&amp;key=xxx
+
 Warning message:
-&#34;Geocoding &#34;parijs_25&#34; failed with error:
+&#34;Geocoding &#34;meldt&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=hamburg&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=verandering_ii&amp;key=xxx
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=duitschland&amp;key=xxx
+
 Warning message:
-&#34;Geocoding &#34;verandering_ii&#34; failed with error:
+&#34;Geocoding &#34;duitschland&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=nnr&amp;key=xxx
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=st_._pierre&amp;key=xxx
+
+&#34;st_._pierre&#34; not uniquely geocoded, using &#34;saint-pierre 97500, st pierre and miquelon&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=wurtemberg&amp;key=xxx
+
 Warning message:
-&#34;Geocoding &#34;nnr&#34; failed with error:
+&#34;Geocoding &#34;wurtemberg&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=arnhem&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=kassel&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=parijs_27&amp;key=xxx
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=augsburg&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=des_morgens&amp;key=xxx
+
 Warning message:
-&#34;Geocoding &#34;parijs_27&#34; failed with error:
+&#34;Geocoding &#34;des_morgens&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=noord-amerika&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=lombardije&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=vlissingsche_courant&amp;key=xxx
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=des_konings&amp;key=xxx
+
 Warning message:
-&#34;Geocoding &#34;vlissingsche_courant&#34; failed with error:
+&#34;Geocoding &#34;des_konings&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=graafschap_van_den_bosch&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=noord-nederland&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=parijs_20&amp;key=xxx
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=o.indie&amp;key=xxx
+
 Warning message:
-&#34;Geocoding &#34;parijs_20&#34; failed with error:
+&#34;Geocoding &#34;o.indie&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=nesselrode&amp;key=xxx
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=hoogen&amp;key=xxx
+
 Warning message:
-&#34;Geocoding &#34;nesselrode&#34; failed with error:
+&#34;Geocoding &#34;hoogen&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=staten-vergaderingen&amp;key=xxx
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=absen&amp;key=xxx
+
 Warning message:
-&#34;Geocoding &#34;staten-vergaderingen&#34; failed with error:
+&#34;Geocoding &#34;absen&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=den_landdag&amp;key=xxx
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=j.a_.&amp;key=xxx
+
 Warning message:
-&#34;Geocoding &#34;den_landdag&#34; failed with error:
+&#34;Geocoding &#34;j.a_.&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=e_iv_c_e_i&amp;key=xxx
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=grimod&amp;key=xxx
+
 Warning message:
-&#34;Geocoding &#34;e_iv_c_e_i&#34; failed with error:
+&#34;Geocoding &#34;grimod&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=malthus&amp;key=xxx
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=la&amp;key=xxx
+
+&#34;la&#34; not uniquely geocoded, using &#34;los angeles, ca, usa&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=berlijn&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=tuorbecke&amp;key=xxx
+
 Warning message:
-&#34;Geocoding &#34;malthus&#34; failed with error:
+&#34;Geocoding &#34;tuorbecke&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=plato-polichinelle&amp;key=xxx
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=ancona&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=eeurstpdugen&amp;key=xxx
+
 Warning message:
-&#34;Geocoding &#34;plato-polichinelle&#34; failed with error:
+&#34;Geocoding &#34;eeurstpdugen&#34; failed with error:
 
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=spanje&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=eindhoven&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=middelburg&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=ridder-orden&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;ridder-orden&#34; failed with error:
-
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=groot-hertogdom_toskane&amp;key=xxx
-&#34;groot-hertogdom_t...&#34; not uniquely geocoded, using &#34;tuscany, italy&#34;
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=franschs_post&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;franschs_post&#34; failed with error:
-
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=noord-_amerika&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=%C3%A2%E2%82%AC_%E2%84%A2&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;â€_™&#34; failed with error:
-
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=mannen-huis&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;mannen-huis&#34; failed with error:
-
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=eneeland&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;eneeland&#34; failed with error:
-
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=ingeklaard-december&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;ingeklaard-december&#34; failed with error:
-
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=mexico&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=rotteredam&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=parijs_30&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;parijs_30&#34; failed with error:
-
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=s%C3%A2%E2%82%AC_%E2%84%A2&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;sâ€_™&#34; failed with error:
-
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=ia_hongarije&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=friesland&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=faankrijk&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=livorno_26&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=nieuwsblad&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;nieuwsblad&#34; failed with error:
-
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=antonini&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;antonini&#34; failed with error:
-
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=nikolaas&amp;key=xxx
-Source : https://maps.googleapis.com/maps/api/geocode/json?address=pella_guzill&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;pella_guzill&#34; failed with error:
-
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=parijs_17&amp;key=xxx
-Warning message:
-&#34;Geocoding &#34;parijs_17&#34; failed with error:
-
-&#34;Source : https://maps.googleapis.com/maps/api/geocode/json?address=luyben&amp;key=xxx
+&#34;
 </pre>
 </div>
 </div>
@@ -15406,7 +15576,7 @@ Warning message:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
@@ -15426,21 +15596,25 @@ Warning message:
 
 <div class="jp-OutputArea-child">
 
-
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table>
-<thead><tr><th scope=col>lon</th><th scope=col>lat</th></tr></thead>
+<table class="dataframe">
+<caption>A tibble: 6 × 2</caption>
+<thead>
+	<tr><th scope=col>lon</th><th scope=col>lat</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
 <tbody>
-	<tr><td> 2.2137490</td><td>46.22764  </td></tr>
-	<tr><td> 2.3522219</td><td>48.85661  </td></tr>
-	<tr><td> 4.9041389</td><td>52.36757  </td></tr>
-	<tr><td> 5.1214201</td><td>52.09074  </td></tr>
-	<tr><td>-0.1275862</td><td>51.50722  </td></tr>
-	<tr><td> 4.3571696</td><td>50.84764  </td></tr>
+	<tr><td> 4.9041389</td><td>52.36757</td></tr>
+	<tr><td> 2.3522219</td><td>48.85661</td></tr>
+	<tr><td> 4.2314198</td><td>51.11525</td></tr>
+	<tr><td>-0.1275862</td><td>51.50722</td></tr>
+	<tr><td>12.4963655</td><td>41.90278</td></tr>
+	<tr><td>-3.7037902</td><td>40.41678</td></tr>
 </tbody>
 </table>
 
@@ -15469,11 +15643,11 @@ Warning message:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[36]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-r"><pre><span></span><span class="n">coordinates</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">top100</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">)</span>
-<span class="nf">head</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">coordinates_delpher</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">top100</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">coordinates_delpher</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15490,21 +15664,25 @@ Warning message:
 
 <div class="jp-OutputArea-child">
 
-
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table>
-<thead><tr><th scope=col>entity</th><th scope=col>N</th><th scope=col>lon</th><th scope=col>lat</th></tr></thead>
+<table class="dataframe">
+<caption>A data.table: 6 × 6</caption>
+<thead>
+	<tr><th scope=col>entity</th><th scope=col>N</th><th scope=col>entity</th><th scope=col>N</th><th scope=col>lon</th><th scope=col>lat</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
 <tbody>
-	<tr><td>frankrijk </td><td>1349      </td><td> 2.2137490</td><td>46.22764  </td></tr>
-	<tr><td>parijs    </td><td> 997      </td><td> 2.3522219</td><td>48.85661  </td></tr>
-	<tr><td>amsterdam </td><td> 535      </td><td> 4.9041389</td><td>52.36757  </td></tr>
-	<tr><td>utrecht   </td><td> 304      </td><td> 5.1214201</td><td>52.09074  </td></tr>
-	<tr><td>londen    </td><td> 168      </td><td>-0.1275862</td><td>51.50722  </td></tr>
-	<tr><td>brussel   </td><td> 129      </td><td> 4.3571696</td><td>50.84764  </td></tr>
+	<tr><td>amsterdam </td><td>652</td><td>amsterdam </td><td>652</td><td> 4.9041389</td><td>52.36757</td></tr>
+	<tr><td>parijs    </td><td>246</td><td>parijs    </td><td>246</td><td> 2.3522219</td><td>48.85661</td></tr>
+	<tr><td>buitenland</td><td>212</td><td>buitenland</td><td>212</td><td> 4.2314198</td><td>51.11525</td></tr>
+	<tr><td>londen    </td><td> 77</td><td>londen    </td><td> 77</td><td>-0.1275862</td><td>51.50722</td></tr>
+	<tr><td>rome      </td><td> 35</td><td>rome      </td><td> 35</td><td>12.4963655</td><td>41.90278</td></tr>
+	<tr><td>madrid    </td><td> 33</td><td>madrid    </td><td> 33</td><td>-3.7037902</td><td>40.41678</td></tr>
 </tbody>
 </table>
 
@@ -15523,6 +15701,949 @@ Warning message:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<center><b><h1>  Now we'll do the same for articles from The Times</b></center>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">times</span> <span class="o">&lt;-</span> <span class="nf">fread</span><span class="p">(</span><span class="s">&quot;C:\\Users\\Schal107\\Documents\\UBU\\Team DH\\Delpher\\times_query=revolution_-_industrial_date=1840-01-01 1860-12-31_ocr=80 100.csv&quot;</span><span class="p">)</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'edition'</li><li>'issue'</li><li>'volume'</li><li>'date-pub'</li><li>'content'</li><li>'title'</li><li>'ocr'</li><li>'id'</li></ol>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Now we'll perform NER on the English titles.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">spacy_initialize</span><span class="p">(</span><span class="n">model</span> <span class="o">=</span> <span class="s">&quot;en_core_web_sm&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Finding a python executable with spaCy installed...
+
+spaCy (language model: en_core_web_sm) is installed in C:\Users\Schal107\AppData\Local\Programs\Python\Python39\python.exe
+
+successfully initialized (spaCy Version: 3.3.0, language model: en_core_web_sm)
+
+(python options: type = &#34;python_executable&#34;, value = &#34;C:\Users\Schal107\AppData\Local\Programs\Python\Python39\python.exe&#34;)
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">parsedtxt2</span> <span class="o">&lt;-</span> <span class="nf">spacy_parse</span><span class="p">(</span><span class="n">times</span><span class="o">$</span><span class="n">title</span><span class="p">,</span> <span class="n">lemma</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">entity</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">nounphrase</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">locations2</span> <span class="o">&lt;-</span> <span class="nf">entity_extract</span><span class="p">(</span><span class="n">parsedtxt2</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">setDT</span><span class="p">(</span><span class="n">locations2</span><span class="p">)</span>
+<span class="n">times_locations</span> <span class="o">&lt;-</span> <span class="n">locations2</span><span class="p">[</span><span class="n">entity_type</span> <span class="o">==</span> <span class="s">&quot;GPE&quot;</span><span class="p">,</span> <span class="n">.N</span><span class="p">,</span> <span class="nf">list</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span> <span class="p">][</span><span class="nf">order</span><span class="p">(</span><span class="o">-</span><span class="n">N</span><span class="p">)]</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">times_locations</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 6 × 2</caption>
+<thead>
+	<tr><th scope=col>entity</th><th scope=col>N</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>London </td><td>781</td></tr>
+	<tr><td>France </td><td>305</td></tr>
+	<tr><td>Paris  </td><td>244</td></tr>
+	<tr><td>Austria</td><td>199</td></tr>
+	<tr><td>Prussia</td><td>122</td></tr>
+	<tr><td>Spain  </td><td>118</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">coordinates_times</span> <span class="o">&lt;-</span> <span class="nf">geocode</span><span class="p">(</span><span class="n">times_locations</span><span class="o">$</span><span class="n">entity</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>Source : https://maps.googleapis.com/maps/api/geocode/json?address=London&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=France&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Paris&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Austria&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Prussia&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Prussia&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Spain&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Ireland&amp;key=xxx
+
+&#34;Ireland&#34; not uniquely geocoded, using &#34;ireland&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=America&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Portugal&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_French_Republic&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Italy&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_United_States&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=India&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Madrid&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Sardinia&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Turkey&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Naples&amp;key=xxx
+
+&#34;Naples&#34; not uniquely geocoded, using &#34;naples, fl, usa&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Germany&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Mexico&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=England&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_Papal_States&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;The_Papal_States&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=China&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Switzerland&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Greece&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Hungary&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Russia&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Australia&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Rome&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Vienna&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Dublin&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Belgium&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Denmark&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Westminster&amp;key=xxx
+
+&#34;Westminster&#34; not uniquely geocoded, using &#34;westminster, london sw1, uk&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Birmingham&amp;key=xxx
+
+&#34;Birmingham&#34; not uniquely geocoded, using &#34;birmingham, al, usa&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Liverpool&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Liverpool&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Central_Germany&amp;key=xxx
+
+&#34;Central_Germany&#34; not uniquely geocoded, using &#34;germany&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Berlin&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Canada&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Esq&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Esq&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Poland&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Lisbon&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=California&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Texas&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Cayenne&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Athens&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Newcastle&amp;key=xxx
+
+&#34;Newcastle&#34; not uniquely geocoded, using &#34;newcastle upon tyne, uk&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Great_Britain&amp;key=xxx
+
+&#34;Great_Britain&#34; not uniquely geocoded, using &#34;great britain, united kingdom&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Cuba&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Bench&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Bench&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Brussels&amp;key=xxx
+
+&#34;Brussels&#34; not uniquely geocoded, using &#34;brussels, belgium&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Milan&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Malta&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=the_King_of_Prussia&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_French_Empire&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;The_French_Empire&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=New_York&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Bombay&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_United_States_And_England&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Sheffield&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=United_States&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Scotland&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=West_India&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Syria&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=FRANCE&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Wellington&amp;key=xxx
+
+&#34;Wellington&#34; not uniquely geocoded, using &#34;wellington, new zealand&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Holland&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_Danubian_Principalities&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;The_Danubian_Prin...&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_Mexican_Republic&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Barcelona&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Burns_.&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Burns_.&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Palermo&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Levant&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Greenwich&amp;key=xxx
+
+&#34;Greenwich&#34; not uniquely geocoded, using &#34;greenwich, ct, usa&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Venezuela&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Almaden&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Brazil&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_Republic_Of_Uruguay&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Palmerston&amp;key=xxx
+
+&#34;Palmerston&#34; not uniquely geocoded, using &#34;palmerston city nt 0830, australia&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Calais&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_Kingdom_Of_Sardinia&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;The_Kingdom_Of_Sa...&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Chili&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Chili&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Bulgaria&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Macedonia&amp;key=xxx
+
+&#34;Macedonia&#34; not uniquely geocoded, using &#34;north macedonia&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=English_Republic&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;English_Republic&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Georgestreet&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Emperor&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Emperor&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Egypt&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Turin&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Maypo&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Maypo&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Richmond&amp;key=xxx
+
+&#34;Richmond&#34; not uniquely geocoded, using &#34;richmond, va, usa&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Kingston&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Old_Bailey&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Peru&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Compte&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Compte&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Kingdom_Of_Sardinia&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Kingdom_Of_Sardinia&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Consul&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Consul&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Bangkok&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Marseilles&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Holstein&amp;key=xxx
+
+&#34;Holstein&#34; not uniquely geocoded, using &#34;holstein, germany&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Broughton&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=St._Domingo&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_Britannia_Bridge&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Silesia&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Silesia&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=the_French_Republic&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Maryland&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Bavaria&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Morocco&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Cracow&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=To_Germany&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Preston&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Hyde_-_Park&amp;key=xxx
+
+&#34;Hyde_-_Park&#34; not uniquely geocoded, using &#34;hyde park, tampa, fl, usa&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Rifled_Cannon&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Rifled_Cannon&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_Orleans_Property&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=French_-_Republic&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=WELLINGTON&amp;key=xxx
+
+&#34;WELLINGTON&#34; not uniquely geocoded, using &#34;wellington, new zealand&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Papal_States&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Papal_States&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Garrisons&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Tusday&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Tusday&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Hayti&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_Kingdom_Of_The_Two_Sicilies&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;The_Kingdom_Of_Th...&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=AUSTRIA&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_City_Of_Paris&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;The_City_Of_Paris&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Londdon&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Lombardy&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_English_Reformation&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_Kingdom_Of_Naples&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Luxembourg&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_United_,_States&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=North_And_South_Italy&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Empire&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Empire&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Manchester_Athenaeaeum_Soiree&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Monyday&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Monyday&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=paris&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Prince_Of_Prussia&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Prince_Of_Prussia&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Cambridge&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=North_-_West&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;North_-_West&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Stockport&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Washington&amp;key=xxx
+
+&#34;Washington&#34; not uniquely geocoded, using &#34;washington, usa&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Netherlands&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=M.A.&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=To_Ireland&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=MALMESBURY&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Cupar&amp;key=xxx
+
+&#34;Cupar&#34; not uniquely geocoded, using &#34;cupar ky15, uk&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=The_Indian_Empire&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;The_Indian_Empire&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Canterbury&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Magenta&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;Magenta&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Edinburgh&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=South_Australia&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Chinese_Empire&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=British_Columbia&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=North_Buckinghamshire&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Victoria&amp;key=xxx
+
+&#34;Victoria&#34; not uniquely geocoded, using &#34;victoria, australia&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=the_Austrian_Empire&amp;key=xxx
+
+Warning message:
+&#34;Geocoding &#34;the_Austrian_Empire&#34; failed with error:
+
+&#34;
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Saxony&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=West_Indies&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Poland.-Berlin&amp;key=xxx
+
+&#34;Poland.-Berlin&#34; not uniquely geocoded, using &#34;poland&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Tenterden&amp;key=xxx
+
+&#34;Tenterden&#34; not uniquely geocoded, using &#34;tenterden, uk&#34;
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Dorsetshire&amp;key=xxx
+
+Source : https://maps.googleapis.com/maps/api/geocode/json?address=Havelock&amp;key=xxx
+
+&#34;Havelock&#34; not uniquely geocoded, using &#34;havelock, nc, usa&#34;
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">coordinates_times</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">times_locations</span><span class="p">,</span> <span class="n">coordinates_times</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">coordinates_times</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 6 × 4</caption>
+<thead>
+	<tr><th scope=col>entity</th><th scope=col>N</th><th scope=col>lon</th><th scope=col>lat</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>London </td><td>781</td><td>-0.1275862</td><td>51.50722</td></tr>
+	<tr><td>France </td><td>305</td><td> 2.2137490</td><td>46.22764</td></tr>
+	<tr><td>Paris  </td><td>244</td><td> 2.3522219</td><td>48.85661</td></tr>
+	<tr><td>Austria</td><td>199</td><td>14.5500720</td><td>47.51623</td></tr>
+	<tr><td>Prussia</td><td>122</td><td>        NA</td><td>      NA</td></tr>
+	<tr><td>Spain  </td><td>118</td><td>-3.7492200</td><td>40.46367</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>To identify the two datasets after merging, we add a variable and rename "N".</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="n">coordinates_times</span><span class="p">[,</span> <span class="n">dataset</span> <span class="o">:=</span> <span class="s">&quot;times&quot;</span><span class="p">,]</span>
+<span class="n">coordinates_delpher</span><span class="p">[,</span> <span class="n">dataset</span> <span class="o">:=</span> <span class="s">&quot;delpher&quot;</span><span class="p">]</span>
+<span class="nf">setnames</span><span class="p">(</span><span class="n">coordinates_times</span><span class="p">,</span> <span class="s">&quot;N&quot;</span><span class="p">,</span> <span class="s">&quot;n_times&quot;</span><span class="p">)</span>
+<span class="nf">setnames</span><span class="p">(</span><span class="n">coordinates_delpher</span><span class="p">,</span> <span class="s">&quot;N&quot;</span><span class="p">,</span> <span class="s">&quot;n_delpher&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 6 × 5</caption>
+<thead>
+	<tr><th scope=col>entity</th><th scope=col>n_times</th><th scope=col>lon</th><th scope=col>lat</th><th scope=col>dataset</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>London </td><td>781</td><td>-0.1275862</td><td>51.50722</td><td>times</td></tr>
+	<tr><td>France </td><td>305</td><td> 2.2137490</td><td>46.22764</td><td>times</td></tr>
+	<tr><td>Paris  </td><td>244</td><td> 2.3522219</td><td>48.85661</td><td>times</td></tr>
+	<tr><td>Austria</td><td>199</td><td>14.5500720</td><td>47.51623</td><td>times</td></tr>
+	<tr><td>Prussia</td><td>122</td><td>        NA</td><td>      NA</td><td>times</td></tr>
+	<tr><td>Spain  </td><td>118</td><td>-3.7492200</td><td>40.46367</td><td>times</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 6 × 7</caption>
+<thead>
+	<tr><th scope=col>entity</th><th scope=col>n_delpher</th><th scope=col>entity</th><th scope=col>N</th><th scope=col>lon</th><th scope=col>lat</th><th scope=col>dataset</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>amsterdam </td><td>652</td><td>amsterdam </td><td>652</td><td> 4.9041389</td><td>52.36757</td><td>delpher</td></tr>
+	<tr><td>parijs    </td><td>246</td><td>parijs    </td><td>246</td><td> 2.3522219</td><td>48.85661</td><td>delpher</td></tr>
+	<tr><td>buitenland</td><td>212</td><td>buitenland</td><td>212</td><td> 4.2314198</td><td>51.11525</td><td>delpher</td></tr>
+	<tr><td>londen    </td><td> 77</td><td>londen    </td><td> 77</td><td>-0.1275862</td><td>51.50722</td><td>delpher</td></tr>
+	<tr><td>rome      </td><td> 35</td><td>rome      </td><td> 35</td><td>12.4963655</td><td>41.90278</td><td>delpher</td></tr>
+	<tr><td>madrid    </td><td> 33</td><td>madrid    </td><td> 33</td><td>-3.7037902</td><td>40.41678</td><td>delpher</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[69]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">setnames</span><span class="p">(</span><span class="n">coordinates_times</span><span class="p">,</span> <span class="s">&quot;entity&quot;</span><span class="p">,</span> <span class="s">&quot;entity_times&quot;</span><span class="p">)</span>
+<span class="nf">setnames</span><span class="p">(</span><span class="n">coordinates_delpher</span><span class="p">,</span> <span class="s">&quot;entity&quot;</span><span class="p">,</span> <span class="s">&quot;entity_delpher&quot;</span><span class="p">)</span>
+
+<span class="n">coordinates_times</span> <span class="o">&lt;-</span> <span class="n">coordinates_times</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">lon</span><span class="p">),]</span>
+<span class="n">coordinates_delpher</span> <span class="o">&lt;-</span> <span class="n">coordinates_delpher</span><span class="p">[</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">lon</span><span class="p">),]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<table class="dataframe">
+<caption>A data.table: 6 × 9</caption>
+<thead>
+	<tr><th scope=col>lat</th><th scope=col>entity_times</th><th scope=col>n_times</th><th scope=col>lon.x</th><th scope=col>dataset.x</th><th scope=col>entity_delpher</th><th scope=col>n_delpher</th><th scope=col>lon.y</th><th scope=col>dataset.y</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>52.13263</td><td>Holland                </td><td> 2</td><td> 5.291266</td><td>times</td><td>holland  </td><td>2</td><td> 5.291266</td><td>delpher</td></tr>
+	<tr><td>52.13263</td><td>Netherlands            </td><td> 1</td><td> 5.291266</td><td>times</td><td>nederland</td><td>3</td><td> 5.291266</td><td>delpher</td></tr>
+	<tr><td>52.13263</td><td>Netherlands            </td><td> 1</td><td> 5.291266</td><td>times</td><td>holland  </td><td>2</td><td> 5.291266</td><td>delpher</td></tr>
+	<tr><td>52.35552</td><td>England                </td><td>17</td><td>-1.174320</td><td>times</td><td>engeland </td><td>1</td><td>-1.174320</td><td>delpher</td></tr>
+	<tr><td>52.35552</td><td>The_English_Reformation</td><td> 1</td><td>-1.174320</td><td>times</td><td>engeland </td><td>1</td><td>-1.174320</td><td>delpher</td></tr>
+	<tr><td>52.52001</td><td>Berlin                 </td><td> 4</td><td>13.404954</td><td>times</td><td>berlijn  </td><td>1</td><td>13.404954</td><td>delpher</td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<center><b><h1>  Next: plot coordinates from Delpher and Times on a map</b></center>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Now we'll need a map! You can use the standard Google Map and define a centre using latitute and longitude. However, for historical data I like to remove roads and names from the map. You can do that by making your own map at <a href="https://mapstyle.withgoogle.com/">Google Mapstyle</a>. With the same API key as you've use for the geocoding, you can export the URL of your map of choice, and paste it below in the function <code>get_googlemap</code>. For some reason, though, you first need to extract the lat and long from this URL, and the zoom level (see below). Then you paste the remaining URL from the first mention of '&amp;maptype' behind <code>path =</code> (don't forget to include it in quotes). Then it should work!</p>
 
 </div>
@@ -15533,7 +16654,7 @@ Warning message:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[70]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">europe5</span> <span class="o">&lt;-</span> <span class="nf">get_googlemap</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="n">lon</span><span class="o">=</span><span class="m">10.95931966568949</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="m">48.561877580811775</span><span class="p">),</span> <span class="n">zoom</span> <span class="o">=</span> <span class="m">4</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="s">&quot;&amp;maptype=roadmap&amp;style=element:geometry%7Ccolor:0xf5f5f5&amp;style=element:labels%7Cvisibility:off&amp;style=element:labels.icon%7Cvisibility:off&amp;style=element:labels.text.fill%7Ccolor:0x616161&amp;style=element:labels.text.stroke%7Ccolor:0xf5f5f5&amp;style=feature:administrative.land_parcel%7Cvisibility:off&amp;style=feature:administrative.land_parcel%7Celement:labels.text.fill%7Ccolor:0xbdbdbd&amp;style=feature:administrative.neighborhood%7Cvisibility:off&amp;style=feature:landscape.natural.terrain%7Ccolor:0xffffff%7Cvisibility:on%7Cweight:4&amp;style=feature:landscape.natural.terrain%7Celement:geometry.fill%7Cvisibility:on%7Cweight:4&amp;style=feature:landscape.natural.terrain%7Celement:geometry.stroke%7Cvisibility:on&amp;style=feature:poi%7Celement:geometry%7Ccolor:0xeeeeee&amp;style=feature:poi%7Celement:labels.text.fill%7Ccolor:0x757575&amp;style=feature:poi.park%7Celement:geometry%7Ccolor:0xe5e5e5&amp;style=feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x9e9e9e&amp;style=feature:road%7Cvisibility:off&amp;style=feature:road%7Celement:geometry%7Ccolor:0xffffff&amp;style=feature:road.arterial%7Celement:labels.text.fill%7Ccolor:0x757575&amp;style=feature:road.highway%7Celement:geometry%7Ccolor:0xdadada&amp;style=feature:road.highway%7Celement:labels.text.fill%7Ccolor:0x616161&amp;style=feature:road.local%7Celement:labels.text.fill%7Ccolor:0x9e9e9e&amp;style=feature:transit.line%7Celement:geometry%7Ccolor:0xe5e5e5&amp;style=feature:transit.station%7Celement:geometry%7Ccolor:0xeeeeee&amp;style=feature:water%7Celement:geometry%7Ccolor:0xc9c9c9&amp;style=feature:water%7Celement:labels.text.fill%7Ccolor:0x9e9e9e&amp;size=480x360&quot;</span><span class="p">)</span>
@@ -15553,12 +16674,13 @@ Warning message:
 
 <div class="jp-OutputArea-child">
 
-
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
 <pre>Source : https://maps.googleapis.com/maps/api/staticmap?center=48.561878,10.95932&amp;zoom=4&amp;size=640x640&amp;scale=2&amp;maptype=terrain&amp;path=&amp;maptype=roadmap&amp;style=element:geometry%7Ccolor:0xf5f5f5&amp;style=element:labels%7Cvisibility:off&amp;style=element:labels.icon%7Cvisibility:off&amp;style=element:labels.text.fill%7Ccolor:0x616161&amp;style=element:labels.text.stroke%7Ccolor:0xf5f5f5&amp;style=feature:administrative.land_parcel%7Cvisibility:off&amp;style=feature:administrative.land_parcel%7Celement:labels.text.fill%7Ccolor:0xbdbdbd&amp;style=feature:administrative.neighborhood%7Cvisibility:off&amp;style=feature:landscape.natural.terrain%7Ccolor:0xffffff%7Cvisibility:on%7Cweight:4&amp;style=feature:landscape.natural.terrain%7Celement:geometry.fill%7Cvisibility:on%7Cweight:4&amp;style=feature:landscape.natural.terrain%7Celement:geometry.stroke%7Cvisibility:on&amp;style=feature:poi%7Celement:geometry%7Ccolor:0xeeeeee&amp;style=feature:poi%7Celement:labels.text.fill%7Ccolor:0x757575&amp;style=feature:poi.park%7Celement:geometry%7Ccolor:0xe5e5e5&amp;style=feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x9e9e9e&amp;style=feature:road%7Cvisibility:off&amp;style=feature:road%7Celement:geometry%7Ccolor:0xffffff&amp;style=feature:road.arterial%7Celement:labels.text.fill%7Ccolor:0x757575&amp;style=feature:road.highway%7Celement:geometry%7Ccolor:0xdadada&amp;style=feature:road.highway%7Celement:labels.text.fill%7Ccolor:0x616161&amp;style=feature:road.local%7Celement:labels.text.fill%7Ccolor:0x9e9e9e&amp;style=feature:transit.line%7Celement:geometry%7Ccolor:0xe5e5e5&amp;style=feature:transit.station%7Celement:geometry%7Ccolor:0xeeeeee&amp;style=feature:water%7Celement:geometry%7Ccolor:0xc9c9c9&amp;style=feature:water%7Celement:labels.text.fill%7Ccolor:0x9e9e9e&amp;size=480x360&amp;key=xxx
+
 </pre>
 </div>
 </div>
@@ -15584,13 +16706,21 @@ Warning message:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[53]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[103]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-r"><pre><span></span><span class="n">p</span> <span class="o">&lt;-</span> <span class="nf">ggmap</span><span class="p">(</span><span class="n">europe5</span><span class="p">)</span>
-<span class="n">p</span> <span class="o">&lt;-</span> <span class="n">p</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">lon</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">)),</span> <span class="n">shape</span><span class="o">=</span><span class="m">16</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span><span class="p">)</span>
-<span class="nf">invisible</span><span class="p">(</span><span class="nf">ggplot_build</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+<span class="n">times</span> <span class="o">&lt;-</span> <span class="n">p</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">coordinates_times</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">lon</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_times</span><span class="p">)),</span> <span class="n">shape</span><span class="o">=</span><span class="m">16</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">invisible</span><span class="p">(</span><span class="nf">ggplot_build</span><span class="p">(</span><span class="n">times</span><span class="p">))</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;times_map.png&quot;</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">&lt;-</span> <span class="nf">ggmap</span><span class="p">(</span><span class="n">europe5</span><span class="p">)</span>
+<span class="n">delpher</span> <span class="o">&lt;-</span> <span class="n">p</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">coordinates_delpher</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">lon</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_delpher</span><span class="p">)),</span> <span class="n">shape</span><span class="o">=</span><span class="m">16</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;blue&quot;</span><span class="p">)</span>
+<span class="nf">invisible</span><span class="p">(</span><span class="nf">ggplot_build</span><span class="p">(</span><span class="n">delpher</span><span class="p">))</span>
 <span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;delpher_map.png&quot;</span><span class="p">)</span>
+
+<span class="nf">invisible</span><span class="p">(</span><span class="nf">ggarrange</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">delpher</span><span class="p">))</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="s">&quot;all_map.png&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15607,14 +16737,26 @@ Warning message:
 
 <div class="jp-OutputArea-child">
 
-
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
 <pre>Saving 6.67 x 6.67 in image
+
 Warning message:
-&#34;Removed 41 rows containing missing values (geom_point).&#34;</pre>
+&#34;Removed 51 rows containing missing values (geom_point).&#34;
+Saving 6.67 x 6.67 in image
+
+Warning message:
+&#34;Removed 13 rows containing missing values (geom_point).&#34;
+Warning message:
+&#34;Removed 51 rows containing missing values (geom_point).&#34;
+Warning message:
+&#34;Removed 13 rows containing missing values (geom_point).&#34;
+Saving 6.67 x 6.67 in image
+
+</pre>
 </div>
 </div>
 
@@ -15641,7 +16783,7 @@ Warning message:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><center><a href="delpher_map.png"><img src="delpher_map.png" width="850"/></center></a></p>
+<p><a href="all_map.png"><img src="all_map.png" width="850"/></a></p>
 
 </div>
 </div>
