@@ -1,3 +1,8 @@
+---
+title: "Plotting historical revolutions"
+---
+
+
 <center><b><h1>  Where were revolutions located between 1840 and 1860, based on article titles from Dutch and English newspapers?</b></center>
 
 
