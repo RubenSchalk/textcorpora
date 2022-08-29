@@ -166,4 +166,13 @@ ggsave("all_map.png")
 
 (The geocoded datasets are available at the [Github repository](https://github.com/RubenSchalk/textcorpora/tree/main/data).)
 
+# Colophon 
+This notebook was created by [Utrecht University Library, Digital Humanities Support](https://www.uu.nl/en/university-library/advice-support-to/researchers/digital-humanities-support)
+
+For questions and suggestions please email [Ruben Schalk](mailto:r.schalk@uu.nl)
+
+Last updated on `r format(Sys.time(), '%d %B, %Y')`
+
+
+
 
